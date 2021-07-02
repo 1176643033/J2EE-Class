@@ -83,7 +83,7 @@
         <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
-                <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">系统用户列表</span></td>
+                <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">部门列表</span></td>
                 <td width="281" background="images/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
                     <tr>
                         <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
