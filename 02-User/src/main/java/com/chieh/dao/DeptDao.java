@@ -12,4 +12,5 @@ public interface DeptDao {
     Integer deleteDept(String did);
     Dept selectByDid(String did);
     Integer updateDept(Dept dept);
+    List<Dept> queryAll();
 }

@@ -6,46 +6,45 @@
  namespace：必须有值，自定义的唯一字符串
  推荐使用：dao 接口的全限定名称
 -->
-<mapper namespace="com.chieh.dao.DeptDao">
+<mapper namespace="com.chieh.dao.RoleDao">
     <!--
     <select>: 查询数据， 标签中必须是 select 语句
     id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
     使用名称表示要执行的 sql 语句
     resultType: 查询语句的返回结果数据类型，使用全限定类名
     -->
-    <insert id="insertDept" >
-        insert into dept (dname, dremark) values (#{dname}, #{dremark})
+    <insert id="insertRole" >
+        insert into role (rname, rremark) values (#{rname}, #{rremark})
 
     </insert>
 
-    <select id="selectByDname" resultType="int">
-        select did from dept WHERE dname = #{dname}
+    <select id="selectByRname" resultType="int">
+        select rid from role WHERE rname = #{rname}
     </select>
 
-    <select id="countDepts" resultType="int">
-        select count(dname) from dept
+    <select id="countRoles" resultType="int">
+        select count(rname) from role
     </select>
 
-    <select id="queryDepts" resultType="com.chieh.domain.Dept">
-        select did,dname, dremark from dept limit #{arg0}, #{arg1}
+    <select id="queryRoles" resultType="com.chieh.domain.Role">
+        select rid,rname, rremark from role limit #{arg0}, #{arg1}
     </select>
 
-    <delete id="deleteDept" >
-        delete from dept where did = #{did}
+    <delete id="deleteRole" >
+        delete from role where rid = #{rid}
     </delete>
 
-    <select id="selectByDid" resultType="com.chieh.domain.Dept">
-        select did, dname, dremark from dept where did = #{did}
+    <select id="selectByRid" resultType="com.chieh.domain.Role">
+        select rid, rname, rremark from role where rid = #{rid}
     </select>
 
-    <update id="updateDept" parameterType="com.chieh.domain.Dept">
-        update dept set dname = #{dname}, dremark = #{dremark} where did = #{did}
+    <update id="updateRole" parameterType="com.chieh.domain.Role">
+        update role set rname = #{rname}, rremark = #{rremark} where rid = #{rid}
     </update>
-
-    <select id="queryAll" resultType="com.chieh.domain.Dept">
-        select did,dname, dremark from dept
+    
+    <select id="queryAll" resultType="com.chieh.domain.Role">
+        select rid,rname, rremark from role
     </select>
-
 </mapper>
 
         <!--

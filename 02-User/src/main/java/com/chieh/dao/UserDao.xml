@@ -18,6 +18,33 @@
         insert into user(password,role_id,phone,createdate,username,remark) values (
                 #{password},#{role_id},#{phone},#{createdate},#{username},#{remark} )
     </insert>
+
+    <select id="selectByPhone" resultType="int">
+        select id from user WHERE phone = #{phone}
+    </select>
+
+    <select id="queryUsers" resultType="com.chieh.domain.User">
+        select id,phone,createdate,username,remark,role.rname as role_id from user right join role on role_id = rid order by user.id limit #{arg0}, #{arg1}
+    </select>
+
+    <select id="countUsers" resultType="int">
+        select count(id) from user
+    </select>
+
+
+    <delete id="deleteUser" >
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="selectById" resultType="com.chieh.domain.User">
+        select id,role_id,phone,createdate,username,remark from user where id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="com.chieh.domain.Dept">
+        update user set role_id = #{role_id}, phone = #{phone}, password = #{password},
+                        username = #{username}, remark =#{remark} where id = #{id}
+    </update>
+
 </mapper>
 
         <!--

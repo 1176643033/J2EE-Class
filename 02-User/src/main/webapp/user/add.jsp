@@ -15,6 +15,11 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+    <script type="text/javascript" src="js/jQuery3.5.js"></script>
+    <script type="text/javascript" src="js/HRS.js"></script>
+
     <style type="text/css">
         <!--
         body {
@@ -56,12 +61,67 @@
         -->
     </style>
 
-    <script>
+    <script type="text/javascript">
+        $(function () {
+            $("#userForm")[0].reset();
+            $("#role_id").empty();
+            loadRole();
+
+            //这里缺填充到角色选择下拉框
+
+            $("#clear").click(function () {
+                $("#userForm")[0].reset()
+            })
+
+            $("#save").click(function () {
+
+                if(validateForm()){
+                    $.ajax({
+                        url  : "user/add",
+                        data : $("#userForm").serialize(),
+                        dataType:"json",
+                        success:function (data) {
+                            $("#msg").text(data.msg);
+                            if(data.msg == "添加用户成功"){
+                                $("#userForm")[0].reset();//添加成功几时清除,以免重复提交    
+                            }
+                        }
+                    })
+                }
+            })
+
+        })
+
+
+        //表单校验
+        function validateForm(){
+            var hrs = new HRS();
+            var formItem1 = new FormItem("用户姓名","username");
+            var formItem2 = new FormItem("用户密码","password");
+            var formItem3 = new FormItem("确认密码","checkpswd");
+            var formItem4 = new FormItem("手机号码","phone");
+            var formItemArr = [formItem1, formItem2, formItem3, formItem4]
+
+            return (hrs.isNotEmpty(formItemArr) && hrs.isSame(formItem2,formItem3));
+        }
+
+        //加载角色函数
+        function loadRole() {
+            $.ajax({
+                url : "role/findAll",
+                dataType: "json",
+                success : function (data) {
+                    $.each(data, function (i,item) {
+                        $("#role_id").append("<option value = '"+item.rid+"' >" + item.rname + "</option>")
+                    })
+                }
+            })
+        }
     </script>
 </head>
 
 <body>
-
+<form id="userForm">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
         <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -82,24 +142,24 @@
                     <tr height="26"></tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">用户姓名</div></td>
-                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="text" name="username" style="width:100px; height:20px; border:solid 1px #035551; color:#000000">&nbsp;<font color='red'>*</font></div></td>
+                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="text" name="username" style="width:100px; height:20px; border:solid 1px #035551; color:#000000" id="username">&nbsp;<font color='red'>*</font></div></td>
                     </tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">用户密码</div></td>
-                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="password" name="password" style="width:100px; height:20px; border:solid 1px #035551; color:#000000">&nbsp;<font color='red'>*</font></div></td>
+                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="password" name="password" style="width:100px; height:20px; border:solid 1px #035551; color:#000000" id="password">&nbsp;<font color='red'>*</font></div></td>
                     </tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">确认密码</div></td>
-                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="password" name="checkpswd" style="width:100px; height:20px; border:solid 1px #035551; color:#000000">&nbsp;<font color='red'>*</font></div></td>
+                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="password" name="checkpswd" style="width:100px; height:20px; border:solid 1px #035551; color:#000000" id="checkpswd">&nbsp;<font color='red'>*</font></div></td>
                     </tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">手机号码</div></td>
-                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="text" name="phone" style="width:100px; height:20px; border:solid 1px #035551; color:#000000">&nbsp;<font color='red'>*</font></div></td>
+                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><input type="text" name="phone" style="width:100px; height:20px; border:solid 1px #035551; color:#000000" id="phone">&nbsp;<font color='red'>*</font></div></td>
                     </tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">角色</div></td>
                         <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2">
-                            <select name="role_id" style="width:105px; height:20px; border:solid 1px #035551; color:#000000">
+                            <select name="role_id" style="width:105px; height:20px; border:solid 1px #035551; color:#000000" id="role_id">
                                 <option value=""></option>
                                 <option>外汇管理局</option>
                                 <option>银行</option>
@@ -107,7 +167,12 @@
                     </tr>
                     <tr>
                         <td width="200" bgcolor="#FFFFFF" height="26" class="STYLE1"><div align="right" style="padding:5px" class="STYLE2 STYLE1">备注</div></td>
-                        <td bgcolor="#FFFFFF" class="STYLE1"><div align="left" style="padding:2px" class="STYLE2"><textarea name="remark" style="width:300px; height:50px; border:solid 1px #035551; color:#000000"></textarea>&nbsp;</div></td>
+                        <td bgcolor="#FFFFFF" class="STYLE1">
+                            <div align="left" style="padding:2px" class="STYLE2">
+                                <textarea name="remark" style="width:300px; height:50px; border:solid 1px #035551; color:#000000" id="remark"></textarea>&nbsp;
+                                <font color="red" id="msg" style="padding-left: 40px;font-size: large"></font>
+                            </div>
+                        </td>
                     </tr>
                 </table></td>
                 <td width="9" background="images/tab_16.gif">&nbsp;</td>
@@ -119,7 +184,7 @@
             <tr>
                 <td width="9" background="images/tab_12.gif">&nbsp;</td>
                 <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68">
-                    <tr height="26"><td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px"><img src="images/save.jpg" style="cursor:hand" onclick="document.location='user.html'" />&nbsp;&nbsp;<img src="images/clear.jpg" style="cursor:hand" /></td></tr>
+                    <tr height="26"><td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px"><img src="images/save.jpg" style="cursor:hand"  id="save"  />&nbsp;&nbsp;<img src="images/clear.jpg" style="cursor:hand"  id="clear"/></td></tr>
                 </table></td>
                 <td width="9" background="images/tab_16.gif">&nbsp;</td>
             </tr>
@@ -146,7 +211,7 @@
         </table></td>
     </tr>
 </table>
-
+</form>
 </body>
 </html>
 

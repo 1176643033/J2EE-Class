@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,6 +23,7 @@ public class DeptController {
     @RequestMapping("/add")
     @ResponseBody
     public Map addDept(Dept dept){
+        System.out.println("============================================");
         Map<String,Object> map = new HashMap<>();
         if (dept.getDremark() == "") { dept.setDremark("无"); }
         if(deptService.addDept(dept)){
@@ -72,5 +74,12 @@ public class DeptController {
             map.put("msg","更新部门信息失败, 请先检查部门名字");
         }
         return map;
+    }
+
+    @RequestMapping("/findAll")
+    @ResponseBody
+    public List<Dept> findAll(){
+        //map存放了一个List<Dept>,以及总记录条数信息,
+        return deptService.findAll();
     }
 }

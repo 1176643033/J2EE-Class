@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Chieh
-  Date: 2021/6/28
-  Time: 12:06
+  Date: 2021/7/3
+  Time: 21:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -64,25 +64,34 @@
 
     <script type="text/javascript">
         $(function () {
-            $("#roleForm")[0].reset()
+
+            $("#roleForm")[0].reset();
 
             $("#clear").click(function () {
                 $("#roleForm")[0].reset()
+            })
+
+            //先从服务端更据传来的rid获取角色名以及备注
+            $.ajax({
+                url  : "role/findByRid",
+                method:"post",
+                data : {"rid":"<%=request.getParameter("chkItems")%>"},
+                dataType:"json",
+                success:function (data) {
+                    $("input[name='rname']").val(data.rname);
+                    $("#rremark").val(data.rremark);
+                }
             })
 
             $("#save").click(function () {
 
                 if(validateForm()){
                     $.ajax({
-                        url  : "role/add",
+                        url  : "role/update",
                         data : $("#roleForm").serialize(),
                         dataType:"json",
-                        type:"post",
                         success:function (data) {
                             $("#msg").text(data.msg);
-                            if(data.msg == "添加角色成功"){
-                                $("#roleForm")[0].reset();
-                            }
                         }
                     })
                 }
@@ -101,12 +110,13 @@
 
 <body>
 <form id="roleForm">
+    <input type="text"  hidden name="rid" value="<%=request.getParameter("chkItems")%>" readonly></input>
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
             <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
-                    <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">新增角色</span></td>
+                    <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">更新角色页面</span></td>
                     <td width="281" background="images/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
                     </table></td>
                     <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
@@ -148,7 +158,13 @@
                 <tr>
                     <td width="9" background="images/tab_12.gif">&nbsp;</td>
                     <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68">
-                        <tr height="26"><td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">  <img src="images/save.jpg" style="cursor:hand" id="save" />&nbsp;<img src="images/clear.jpg" style="cursor:hand" id="clear" /></td></tr>
+                        <tr height="26">
+                            <td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">
+                                <img src="images/save.jpg" style="cursor:hand" id="save" />&nbsp;
+                                <img src="images/clear.jpg" style="cursor:hand" id="clear" />
+                                &ensp;<button type="button" style="background-color: #009f95;height: 20px" onclick="document.location='role/find.jsp'" >返回</button>
+                            </td>
+                        </tr>
                     </table></td>
                     <td width="9" background="images/tab_16.gif">&nbsp;</td>
                 </tr>

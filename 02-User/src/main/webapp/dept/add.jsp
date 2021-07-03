@@ -77,6 +77,7 @@
                         url  : "dept/add",
                         data : $("#deptForm").serialize(),
                         dataType:"json",
+                        type:"post",
                         success:function (data) {
                             $("#msg").text(data.msg);
                             if(data.msg != "添加部门成功"){
