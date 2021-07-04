@@ -1,0 +1,72 @@
+{
+  "id": "2635471",
+  "name": "J2EE",
+  "font_family": "myicon",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2418242",
+      "name": "保存",
+      "font_class": "baocun1",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "577352",
+      "name": "清除",
+      "font_class": "qingchu",
+      "unicode": "e747",
+      "unicode_decimal": 59207
+    },
+    {
+      "icon_id": "7017733",
+      "name": "查询",
+      "font_class": "chaxun",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "19463386",
+      "name": "增加 添加 加减",
+      "font_class": "zengjiatianjiajiajian",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "6512208",
+      "name": "角色管理",
+      "font_class": "jiaoseguanli",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3199546",
+      "name": "部门设置",
+      "font_class": "drxx63",
+      "unicode": "e703",
+      "unicode_decimal": 59139
+    },
+    {
+      "icon_id": "3199583",
+      "name": "部门审批",
+      "font_class": "drxx27",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "3199598",
+      "name": "职位岗位",
+      "font_class": "drxx12",
+      "unicode": "e714",
+      "unicode_decimal": 59156
+    },
+    {
+      "icon_id": "10063196",
+      "name": "用户",
+      "font_class": "NMStubiao-",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}

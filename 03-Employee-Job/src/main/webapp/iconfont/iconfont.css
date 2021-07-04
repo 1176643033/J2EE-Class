@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "myicon"; /* Project id 2635471 */
+  src: url('iconfont.woff2?t=1624886869537') format('woff2'),
+       url('iconfont.woff?t=1624886869537') format('woff'),
+       url('iconfont.ttf?t=1624886869537') format('truetype');
+}
+
+.myicon {
+  font-family: "myicon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconbaocun1:before {
+  content: "\e66b";
+}
+
+.iconqingchu:before {
+  content: "\e747";
+}
+
+.iconchaxun:before {
+  content: "\e625";
+}
+
+.iconzengjiatianjiajiajian:before {
+  content: "\e61d";
+}
+
+.iconjiaoseguanli:before {
+  content: "\e60a";
+}
+
+.icondrxx63:before {
+  content: "\e703";
+}
+
+.icondrxx27:before {
+  content: "\e710";
+}
+
+.icondrxx12:before {
+  content: "\e714";
+}
+
+.iconNMStubiao-:before {
+  content: "\e623";
+}
+
