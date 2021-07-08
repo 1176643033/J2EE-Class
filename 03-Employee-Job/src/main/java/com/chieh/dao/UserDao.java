@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserDao {
     Integer insertUser(User user);
-    Integer selectByPhone(String phone);
+    User selectByPhone(String phone);
     List<User> queryUsers(int index, int pageSize);
     Integer countUsers();
     Integer deleteUser(String id);

@@ -1,5 +1,7 @@
 package com.chieh.controller;
 
+import com.chieh.dao.CountsDao;
+import com.chieh.domain.Counts;
 import com.chieh.domain.User;
 import com.chieh.service.UserService;
 import com.chieh.utils.DateTimeUtil;
@@ -10,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,6 +22,8 @@ public class UserController {
     //引用类型的自动注入@Autowired, @Resource
     @Resource
     private UserService userService;
+    @Resource
+    private CountsDao countsDao;
 
     @RequestMapping("/add")
     @ResponseBody
@@ -78,4 +82,40 @@ public class UserController {
         }
         return map;
     }
+
+    @RequestMapping("/findcounts")
+    @ResponseBody
+    public Counts findCounts(){
+        return countsDao.selectCounts();
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String login(String phone, String password, String code, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        //1.先判断验证码是否匹配
+        if(code != null && !"".equals(code)){
+            if(code.equals((String)session.getAttribute("code"))){
+                System.out.println("===============================验证码匹配完成");
+                //验证码验证匹配
+                //2.调用service层检验是否存在手机号且密码一致
+                User user = userService.login(phone,password);
+                if(user != null){
+                    //塞入到session中
+                    session.setAttribute("user",user);
+                    return "main";
+                }
+                request.setAttribute("msg","手机号或密码错误");
+                return "login";
+            }
+        }
+        request.setAttribute("msg","验证码错误");
+        return "login";
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
+        return "index";
+    }
+
 }

@@ -19,8 +19,8 @@
                 #{password},#{role_id},#{phone},#{createdate},#{username},#{remark} )
     </insert>
 
-    <select id="selectByPhone" resultType="int">
-        select id from user WHERE phone = #{phone}
+    <select id="selectByPhone" resultType="com.chieh.domain.User">
+        select id,role_id,phone,createdate,username,remark,password from user WHERE phone = #{phone}
     </select>
 
     <select id="queryUsers" resultType="com.chieh.domain.User">

@@ -21,10 +21,11 @@ HRS = function () {
         }
 
         //判断是否是数字,这里还需要更加完善，判断不是2.0，3.0之类小数
-        if( isNaN(domObj.value) ){
-            if (domObj.value.contains(".")) {
+        if( isNaN(domObj.value) || domObj.value.contains(".") ){
+            /*if (domObj.value.contains(".")) {
                 alert("请正确输入整型数字");
-            }
+            }*/
+            alert("请正确输入整型数字");
             return false;
         }
 

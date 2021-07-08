@@ -11,4 +11,5 @@ public interface UserService {
     Integer deleteUser(String[] ids);
     User findById(String id);
     boolean updateUser(User user);
+    User login(String phone, String password);
 }
