@@ -24,7 +24,14 @@
     </select>
 
     <select id="queryUsers" resultType="com.chieh.domain.User">
-        select id,phone,createdate,username,remark,role.rname as role_id from user left join role on role_id = rid order by user.id limit #{arg0}, #{arg1}
+        select id,phone,createdate,username,remark,role.rname as role_id from user left join role on role_id = rid where 1=1
+        <if test="searchphone != null and searchphone != '%%' ">
+                 and user.phone like #{searchphone}
+        </if>
+        <if test="searchname != null and searchname != '%%' ">
+            and user.username like #{searchname}
+        </if>
+         order by user.id
     </select>
 
     <select id="countUsers" resultType="int">

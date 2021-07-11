@@ -26,7 +26,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo " style="color: #ffffff">狗蛋公司人事管理</div>
+        <div class="layui-logo " style="color: #ffffff">公司人事管理</div>
         <!-- 头部区域（可配合layui 已有的水平导航）
         <ul class="layui-nav layui-layout-left">
 
@@ -46,11 +46,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item layui-hide layui-show-md-inline-block">
                 <a href="javascript:;">
-                    <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" class="layui-nav-img">
-                    当前用户名
+                    <img src="images/touxiang.jpg" class="layui-nav-img">
+                    ${user.username}
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">个人信息</a></dd>
+                    <dd><a href="javascript:;" data-method="setTop" id="myinfo">个人信息</a></dd>
                     <dd><a href="user/logout">退出系统</a></dd>
                 </dl>
             </li>
@@ -67,7 +67,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">&ensp;<i class="myicon iconNMStubiao- " style="font-size: 25px; color: cadetblue ;"></i>&ensp;&ensp;用户管理</a>
+                    <a class="" href="javascript:;">&ensp;<i class="myicon iconNMStubiao- " style="font-size: 28px; color: cadetblue ;margin-left: -1px;"></i>&ensp;&ensp;用户管理</a>
                     <dl class="layui-nav-child" value="user">
                         <dd>
                             <a href="javascript:;"
@@ -76,7 +76,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询用户"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;用户查询
                             </a>
                         </dd>
@@ -87,14 +87,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加用户"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加用户
                             </a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">&ensp;<i class="myicon icondrxx27 " style="font-size: 25px; color: cadetblue;"></i>&ensp;&ensp;部门管理</a>
+                    <a href="javascript:;">&ensp;<i class="myicon icondrxx27 " style="font-size: 28px; color: cadetblue;margin-left: -3px;"></i>&ensp;&ensp;部门管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -103,7 +103,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询部门"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;查询部门
                             </a>
                         </dd>
@@ -114,14 +114,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加部门"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加部门
                             </a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">&ensp;<i class="myicon icondrxx12 " style="font-size: 25px; color: cadetblue;"></i>&ensp;&ensp;职位管理</a>
+                    <a href="javascript:;">&ensp;<i class="myicon icondrxx12 " style="font-size: 28px; color: cadetblue;"></i>&ensp;&ensp;职位管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -130,7 +130,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询职位"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;查询职位
                             </a>
                         </dd>
@@ -141,14 +141,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加职位"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加职位
                             </a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">&ensp;<i class="myicon icondrxx63 " style="font-size: 25px; color: cadetblue;"></i>&ensp;&ensp;员工管理</a>
+                    <a href="javascript:;">&ensp;<i class="myicon icondrxx63 " style="font-size: 28px; color: cadetblue;"></i>&ensp;&ensp;员工管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -157,7 +157,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询员工"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;查询员工
                             </a>
                         </dd>
@@ -168,14 +168,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加员工"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加员工
                             </a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="myicon iconjiaoseguanli " style="font-size: 40px; color: cadetblue;"></i>&ensp;角色管理</a>
+                    <a href="javascript:;"><i class="myicon iconjiaoseguanli " style="font-size: 43px; color: cadetblue;"></i>&ensp;角色管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -184,7 +184,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询角色"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;查询角色
                             </a>
                         </dd>
@@ -195,7 +195,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加角色"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加角色
                             </a>
                         </dd>
@@ -204,7 +204,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 <!---------------------------->
 
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="myicon iconjiaoseguanli " style="font-size: 40px; color: cadetblue;"></i>&ensp;公告管理</a>
+                    <a href="javascript:;"><i class="myicon icongonggao " style="font-size: 30px; color: cadetblue;margin-left: 6px;"></i>&ensp;&ensp;公告管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -213,7 +213,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="查询公告"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;查询公告
                             </a>
                         </dd>
@@ -224,14 +224,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="添加公告"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconrelease-1-copy " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;添加公告
                             </a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="myicon iconjiaoseguanli " style="font-size: 40px; color: cadetblue;"></i>&ensp;文件管理</a>
+                    <a href="javascript:;">&nbsp;<i class="myicon iconwenjian " style="font-size: 30px; color: cadetblue;margin-left: 3px;"></i>&ensp;&ensp;文件管理</a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;"
@@ -240,7 +240,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="下载文件"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconchaxun " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconxiazai " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;下载文件
                             </a>
                         </dd>
@@ -251,7 +251,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                                data-title="上传文件"
                                data-type="tabAdd"
                                class="site-demo-active">
-                                <i class="myicon iconzengjiatianjiajiajian " style="font-size: 20px; color: cadetblue;"></i>
+                                <i class="myicon iconshangchuan " style="font-size: 20px; color: cadetblue;margin-left: 16px;"></i>
                                 &ensp;上传文件
                             </a>
                         </dd>
@@ -277,7 +277,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
     <div class="layui-footer" align="center">
         <!-- 底部固定区域 -->
-        版权所有©狗蛋公司 ———— 一个不存在的公司
+        版权所有©XXXX ———— 一个不存在的公司
     </div>
 </div>
 
@@ -310,7 +310,24 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
         //触发事件
         var active = {
-            tabAdd: function (url, id, title) {
+
+            setTop: function(){
+                var that = this;
+                //多窗口模式，层叠置顶
+                layer.open({
+                    type: 2 //这里以iframe举例
+                    ,title:'个人资料'
+                    ,area:['390px','560px']
+                    ,shade: 0
+                    ,maxmin:true
+                    ,content:"user/myinfo.jsp"
+                    ,zIndex:layer.zIndex
+                    ,
+                });
+            }
+            ,
+
+          tabAdd: function (url, id, title) {
                 //新增一个Tab项 传入三个参数，分别对应其标题，tab页面的地址，还有一个规定的id，是标签中data-id的属性值
                 //关于tabAdd的方法所传入的参数可看layui的开发文档中基础方法部分
                 element.tabAdd('demo', {
@@ -336,6 +353,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 })
             }
         };
+
+        //个人信息点击事件
+        $("#myinfo").click(function () {
+            var othis = $(this),method = othis.data('method');
+            active[method] ? active[method].call(this,othis): '';
+        })
 
         //当点击有site-demo-active属性的标签时，即左侧菜单栏中内容 ，触发点击事件
         $('.site-demo-active').on(

@@ -9,4 +9,5 @@ public interface NoticeService {
     List<Notice> findTop5Notices();
     boolean addNotice(Notice notice);
     Map findNotice( int pageNo,int pageSize);
+    Integer deleteNotice(String id);
 }

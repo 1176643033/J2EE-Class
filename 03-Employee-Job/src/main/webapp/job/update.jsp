@@ -159,10 +159,10 @@
                     <td width="9" background="images/tab_12.gif">&nbsp;</td>
                     <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68">
                         <tr height="26">
-                            <td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">
-                                <img src="images/save.jpg" style="cursor:hand" id="save" />&nbsp;
-                                <img src="images/clear.jpg" style="cursor:hand" id="clear" />
-                                &ensp;<button type="button" style="background-color: #009f95;height: 20px" onclick="document.location='job/find.jsp'" >返回</button>
+                            <td bgcolor="#FFFFFF" height="20" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">
+                                <button  type="button" id="save" class="layui-btn layui-btn-radius" ><i class="layui-icon layui-icon-ok" style="font-size: 15px;">&ensp;保存</i></button>
+                                &ensp;&ensp;<button  type="button" id="clear" class="layui-btn layui-btn-radius" ><i class="layui-icon layui-icon-fonts-clear" style="font-size: 15px;">&ensp;清除</i></button>
+                                &ensp;<button type="button" class="layui-btn layui-btn-radius" onclick="document.location='job/find.jsp'" ><i class="layui-icon layui-icon-left" style="font-size: 15px;">&ensp;返回</i></button>
                             </td>
                         </tr>
                     </table></td>

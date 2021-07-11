@@ -85,8 +85,10 @@
                     $("#phone").val(data.phone);
                     $("#qq_num").val(data.qq_num);
                     $("#email").val(data.email);
-                    $("#dept_id").val(data.dept_id+'');
-                    $("#job_id").val(data.job_id+'')
+                    console.log(data.dept_id)
+                    $("#dept_id").val(data.dept_id);
+                    console.log(data.job_id)
+                    $("#job_id").val(data.job_id)
                     $("#sex").val(data.sex);
                     $("#party").val(data.party);
                     $("#race").val(data.race);
@@ -287,10 +289,10 @@
                     <td width="9" background="images/tab_12.gif">&nbsp;</td>
                     <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68">
                         <tr height="26">
-                            <td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">
-                                <img src="images/save.jpg" style="cursor:hand"  id="save"  />&nbsp;&nbsp;
-                                <img src="images/clear.jpg" style="cursor:hand"  id="clear"/>
-                                <button type="button" style="background-color: #009f95;height: 20px" onclick="document.location='employee/find.jsp'" >返回</button>
+                            <td bgcolor="#FFFFFF" height="20" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px">
+                                <button  type="button" id="save" class="layui-btn layui-btn-radius" ><i class="layui-icon layui-icon-ok" style="font-size: 15px;">&ensp;保存</i></button>
+                                &ensp;<button  type="button" id="clear" class="layui-btn layui-btn-radius" style="margin-left: 100px;" ><i class="layui-icon layui-icon-fonts-clear" style="font-size: 15px;">&ensp;清除</i></button>
+                                &ensp;<button type="button" class="layui-btn layui-btn-radius" style="margin-left: 100px;" onclick="document.location='employee/find.jsp'" ><i class="layui-icon layui-icon-left" style="font-size: 15px;">&ensp;返回</i></button>
                             </td>
                         </tr>
                     </table></td>

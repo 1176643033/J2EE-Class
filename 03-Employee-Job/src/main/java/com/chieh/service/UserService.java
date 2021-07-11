@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface UserService {
     boolean addUser(User user);
-    Map findUser(int pageSize, int pageNo);
+    List<User> findUser(String searchphone,String searchname);
     Integer deleteUser(String[] ids);
     User findById(String id);
     boolean updateUser(User user);

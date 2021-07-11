@@ -65,6 +65,12 @@
             //默认展示第一页
             goPage(1);
             pageNavigation();
+            $("#searchphone").bind('input propertychange', function() {
+                goPage(1);
+            });
+            $("#searchname").bind('input propertychange', function() {
+                goPage(1);
+            });
         })
 
 
@@ -139,7 +145,6 @@
 
         //跳转页
         function goPage(pageNo) {
-
             //跳转指定页面时 没有这个参数pageNo, 所以判断成功后给pageNo赋值
             if(pageNo == undefined){
                 //先验证$("input[name='textfield']").val()是否为非空且是整型数
@@ -154,8 +159,9 @@
             }
             //ajax异步获取页对象
             $.ajax({
-                url  : "user/find?pageSize=<%=pageSize%>&pageNo="+ pageNo,
+                url  : "user/find?pageSize=<%=pageSize%>&pageNo="+ pageNo+"&searchphone="+$("#searchphone").val()+"&searchname="+$("#searchname").val(),
                 cache:false,
+                type:"post",
                 dataType:"json",
                 success:function (data) {
                     $("#tableShow").empty();
@@ -168,6 +174,7 @@
                         '                            <td width="18%" height="18" background="images/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">创建日期</div></td>\n' +
                         '                            <td width="18%" height="18" background="images/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">手机号码</div></td>\n' +
                         '                            <td width="40%" height="18" background="images/tab_14.gif" class="STYLE1"><div align="center" class="STYLE2 STYLE1">备注</div></td>\n' +
+
                         '                        </tr>')
                     //遍历用户列表塞入表格
                     $.each(data.list, function (i,item) {
@@ -196,6 +203,7 @@
                         $("input[name='chkItems']").prop("checked", $(this).prop("checked"));
                         chkClick();//调用一遍这个函数以决定删改操作是否开启
                     })
+                    chkClick();//调用一遍这个函数以决定删改操作是否开启
                 }
             })
 
@@ -243,7 +251,15 @@
 <body>
 
     <div style="height: 30px">
-
+        <table>
+            <tr>
+                <td >员工手机号:</td>
+                <td ><input type="text" id="searchphone" name="searchphone" style="width:170px; height:20px; border:solid 1px #035551; color:#000000"/></td>
+                <td></td>
+                <td>员工名称:</td>
+                <td ><input type="text" id="searchname" name="searchname" style="width:70px; height:20px; border:solid 1px #035551; color:#000000"/></td>
+            </tr>
+        </table>
     </div>
 
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -255,11 +271,6 @@
                     <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">系统用户列表</span></td>
                     <td width="281" background="images/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
                         <tr>
-                            <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="STYLE1"><div align="center"><img src="images/add.jpg" style="cursor:hand" onclick="document.location='dept/add.jsp'" id="imgAdd"/></div></td>
-                                </tr>
-                            </table></td>
                             <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td class="STYLE1"><div align="center"><img src="images/update_disabled.jpg" id="imgUpdate"/></div></td>
@@ -274,6 +285,7 @@
                     </table></td>
                     <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
                 </tr>
+
             </table></td>
         </tr>
         <tr>
@@ -285,8 +297,6 @@
                         <!---在这加入一个表单是为了方便 删除或者更新操作时提交表单获取did值-->
                         <form id="userForm" >
                         <table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68" id="tableShow" >
-
-
                         </table>
                         </form>
                     </td>

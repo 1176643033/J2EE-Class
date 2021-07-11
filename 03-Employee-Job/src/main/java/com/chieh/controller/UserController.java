@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -42,11 +44,25 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping("/find")
+    @RequestMapping(value = "/find")
     @ResponseBody
-    public Map findUser(int pageSize, int pageNo){
+    public Map findUser(int pageSize, int pageNo,String searchphone,String searchname ){
+        System.out.println("!!!!!!!!!!!!!!!!!!!!"+searchphone+"--------------"+searchname+"!!!!!!!!!!!!!!!!!!!!");
         //map存放了一个List<User>,以及总记录条数信息,
-        return userService.findUser(pageSize,pageNo);
+        Map<String,Object> map = new HashMap<>();
+        List<User> list = userService.findUser(searchphone,searchname);
+        List<User> userList = new ArrayList<>();
+        int size = pageSize;
+        for (int i=0; i<list.size(); i++){
+            if (i >= (pageNo-1)*pageSize  && size>0){
+                userList.add(list.get(i)) ;
+                size--;
+            }
+        }
+
+        map.put("total",list.size());
+        map.put("list",userList);
+        return map;
     }
 
     @RequestMapping(value = "/findByDid",method = RequestMethod.POST)
@@ -94,7 +110,7 @@ public class UserController {
         HttpSession session = request.getSession();
         //1.先判断验证码是否匹配
         if(code != null && !"".equals(code)){
-            if(code.equals((String)session.getAttribute("code"))){
+            if(code.equalsIgnoreCase((String)session.getAttribute("code"))){
                 System.out.println("===============================验证码匹配完成");
                 //验证码验证匹配
                 //2.调用service层检验是否存在手机号且密码一致

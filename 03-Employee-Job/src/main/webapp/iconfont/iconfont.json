@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1029249",
+      "name": "发布",
+      "font_class": "release-1-copy",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "4143520",
+      "name": "发布",
+      "font_class": "fabu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "6970015",
+      "name": "公告",
+      "font_class": "gonggao",
+      "unicode": "e6f9",
+      "unicode_decimal": 59129
+    },
+    {
+      "icon_id": "5035252",
+      "name": "文件",
+      "font_class": "wenjian",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "7708055",
+      "name": "上传",
+      "font_class": "shangchuan",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "21175595",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
       "icon_id": "2418242",
       "name": "保存",
       "font_class": "baocun1",

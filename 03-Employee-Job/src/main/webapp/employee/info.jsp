@@ -247,7 +247,7 @@
                     <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#0e6f68">
                         <tr height="26">
                             <td bgcolor="#FFFFFF" height="26" class="STYLE1" colspan="2" style="padding-top:5px;padding-left:200px" align="center">
-                                <button type="button" style="background-color: #009f95;height: 20px" onclick="document.location='employee/find.jsp'" >返回</button>
+                                <button type="button" class="layui-btn layui-btn-radius" style="margin-left: 100px;" onclick="document.location='employee/find.jsp'" ><i class="layui-icon layui-icon-left" style="font-size: 15px;">&ensp;返回</i></button>
                             </td>
                         </tr>
                     </table></td>

@@ -10,4 +10,5 @@ public interface NoticeDao {
     Integer insertNotice(Notice notice);
     List<Notice> queryNotice(int index, int pageSize);
     Integer countNotices();
+    Integer deleteNotice(String id);
 }

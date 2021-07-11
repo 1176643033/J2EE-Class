@@ -252,11 +252,6 @@
                     <tr>
                         <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td class="STYLE1"><div align="center"><img src="images/add.jpg" style="cursor:hand" onclick="document.location='dept/add.jsp'" id="imgAdd"/></div></td>
-                            </tr>
-                        </table></td>
-                        <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
-                            <tr>
                                 <td class="STYLE1"><div align="center"><img src="images/update_disabled.jpg" id="imgUpdate"/></div></td>
                             </tr>
                         </table></td>

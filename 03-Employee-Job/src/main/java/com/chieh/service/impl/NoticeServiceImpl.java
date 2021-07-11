@@ -37,4 +37,13 @@ public class NoticeServiceImpl implements NoticeService {
         map.put("list",noticeDao.queryNotice((pageNo-1)*pageSize,pageSize));
         return map;
     }
+
+    @Override
+    public Integer deleteNotice(String id) {
+        Integer count = 0;
+        count += noticeDao.deleteNotice(id);
+        return count;
+    }
+
+
 }

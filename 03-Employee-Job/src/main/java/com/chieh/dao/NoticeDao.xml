@@ -29,6 +29,10 @@
     <select id="queryNotice" resultType="com.chieh.domain.Notice">
         select id,userId, name,title,content,remark from notice limit #{arg0}, #{arg1}
     </select>
+
+    <delete id="deleteNotice" >
+        delete from notice where id = #{id}
+    </delete>
 </mapper>
 
         <!--

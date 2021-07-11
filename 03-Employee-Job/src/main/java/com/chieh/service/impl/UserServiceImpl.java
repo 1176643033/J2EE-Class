@@ -7,7 +7,9 @@ import com.sun.xml.internal.ws.developer.ValidationErrorHandler;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.jws.soap.SOAPBinding;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -27,12 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map findUser(int pageSize, int pageNo) {
+    public List<User> findUser(String searchphone, String searchname) {
         Map<String,Object> map = new HashMap<>();
-        int total = userDao.countUsers();
-        map.put("total",total);
-        map.put("list",userDao.queryUsers((pageNo-1)*pageSize,pageSize));
-        return map;
+        String phone = "%"+searchphone+"%";
+        String name = "%"+searchname+"%";
+        return userDao.queryUsers(phone,name);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
     public boolean updateUser(User user) {
         User user1 = userDao.selectByPhone(user.getPhone());
         //该手机不存在或和本user相同才进行更新操作
-        if ( user1 == null || user1.getId() == user.getId() ){
+        if ( user1 == null || user1.getId().equals(user.getId())){
             if(userDao.updateUser(user) > 0){
                 return true;
             }
